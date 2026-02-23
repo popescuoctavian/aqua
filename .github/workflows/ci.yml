@@ -9,15 +9,29 @@ jobs:
   run-ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v2
         with:
-          node-version: 22
+          persist-credentials: false
 
-      - name: Install dependencies
-        run: yarn install
+      # - name: Create GitHub App Token
+      #   uses: actions/create-github-app-token@v2
+      #   id: app-token
+      #   with:
+      #     app-id: ${{ secrets.CI_ROBOT_APP_ID }}
+      #     private-key: ${{ secrets.CI_ROBOT_APP_PRIVATE_KEY }}
+      #     owner: ${{ github.repository_owner }}
+
+      # - name: Setup git credentials for GitHub App
+      #   run: |
+      #     git config --global url."https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/".insteadOf "https://github.com/"
+      #     git config --global url."https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/".insteadOf "git@github.com:"
+      #     git config --global url."https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/".insteadOf "ssh://git@github.com/"
+
+      - name: Install node modules
+        run: npm install
+
+#      - name: Check gas snapshots
+#        run: forge snapshot --check --tolerance 5 --no-match-test "testFuzz_*"
 
       - name: Run tests
-        run: yarn test --build-profile ci
+        run: npm test -- --build-profile ci
