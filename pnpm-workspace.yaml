@@ -1,2 +1,0 @@
-patchedDependencies:
-  '@1inch/solidity-utils@6.9.2': patches/@1inch__solidity-utils@6.9.2.patch

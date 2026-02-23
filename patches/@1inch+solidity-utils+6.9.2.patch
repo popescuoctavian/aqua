@@ -1,7 +1,7 @@
-diff --git a/package.json b/package.json
-index 75c7c7c80d2f6cc302b5fae26bf9accc40b128fe..3c4db7db72deee6305d0af5b73e48220f8fdc6db 100644
---- a/package.json
-+++ b/package.json
+diff --git a/node_modules/@1inch/solidity-utils/package.json b/node_modules/@1inch/solidity-utils/package.json
+index 75c7c7c..16754d5 100644
+--- a/node_modules/@1inch/solidity-utils/package.json
++++ b/node_modules/@1inch/solidity-utils/package.json
 @@ -6,7 +6,8 @@
    "exports": {
      ".": "./dist/src/index.js",
